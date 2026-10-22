@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../lib');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Given matrix where you have to find cats by ears "^^"
@@ -16,11 +16,10 @@ const { NotImplementedError } = require('../lib');
  */
 function countCats(matrix) {
   // Remove line below and write your code here
-  const newMatrix = matrix.flat();
-  const catArr = newMatrix.filter((item) => item === '^^');
-  return catArr.length;
+  let catsArr = matrix.flat().filter((item) => item === "^^");
+  return catsArr.length;
 }
 
 module.exports = {
-  countCats
+  countCats,
 };

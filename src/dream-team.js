@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../lib');
+const { NotImplementedError, isThrowingExpectedErrors } = require("../lib");
 
 /**
  * Create name of dream team based on the names of its members
@@ -19,16 +19,14 @@ function createDreamTeam(members) {
     return false;
   }
   return members
-  .filter((item) => typeof(item) === 'string')
-  .map((item) => item.toUpperCase())
-  .map((item) => item.replace(/\s/g, ''))
-  .map((item) => {
-    return item[0];
-  })
-  .sort()
-  .join('')
+    .filter((item) => typeof item === "string")
+    .filter((item) => item.length > 0)
+    .map((item) => item.trim())
+    .map((word) => word[0].toUpperCase())
+    .sort()
+    .join("");
 }
 
 module.exports = {
-  createDreamTeam
+  createDreamTeam,
 };

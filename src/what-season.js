@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../lib');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Extract season from given date and expose the enemy scout!
@@ -13,27 +13,20 @@ const { NotImplementedError } = require('../lib');
  */
 function getSeason(date) {
   // Remove line below and write your code here
-  if(date === undefined) {
-    return 'Unable to determine the time of year!';
+  if (date.length === 0) return "Unable to determine the time of year!";
+  const month = date.getMonth();
+  if (month === 11 || month === 0 || month === 1) {
+    return "winter";
   }
-  if (date.getFullYear !== year || date.getMonth !== month || date.getDate !== date) {
-    throw new Error("Invalid date!");
+  if (month === 2 || month === 3 || month === 4) {
+    return "spring";
   }
-  //если js вынужден преобразовать дату(то есть кол-во дней не совпадает с месяцев), то возвращаем ошибку
-  //js преобразовывает объекты типа дата автоматически.
-  const month = date.getMonth() + 1;
-  if (month === 12 || month < 3 ) {
-    return 'winter';
+  if (month === 5 || month === 6 || month === 7) {
+    return "summer";
   }
-  if (month > 2 && month < 6) {
-    return 'spring';
-  }
-  if (month > 5 && month < 9) {
-    return 'summer';
-  }
-  return 'autumn'
+  return "autumn";
 }
 
 module.exports = {
-  getSeason
+  getSeason,
 };
